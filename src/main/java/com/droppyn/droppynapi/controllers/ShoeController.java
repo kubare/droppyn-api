@@ -1,5 +1,7 @@
-package com.droppyn.droppynapi;
+package com.droppyn.droppynapi.controllers;
 
+import com.droppyn.droppynapi.security.services.ShoeService;
+import com.droppyn.droppynapi.models.Shoe;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -8,32 +10,32 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/api")
 @CrossOrigin
-public class DroppynApi {
+public class ShoeController {
 
-    private DroppynManager shoes;
+    private ShoeService shoes;
 
     @Autowired
-    public DroppynApi(DroppynManager shoes) {
+    public ShoeController(ShoeService shoes) {
         this.shoes = shoes;
     }
 
     @GetMapping("/all")
-    public Iterable<Droppyn> getAll() {
+    public Iterable<Shoe> getAll() {
         return shoes.findAll();
     }
 
     @GetMapping
-    public Optional<Droppyn> getById(@RequestParam String index) {
+    public Optional<Shoe> getById(@RequestParam String index) {
         return shoes.findById(index);
     }
 
     @PostMapping
-    public Droppyn addShoes(@RequestBody Droppyn shoe) {
+    public Shoe addShoes(@RequestBody Shoe shoe) {
         return shoes.save(shoe);
     }
 
     @PutMapping
-    public Droppyn updateShoes(@RequestBody Droppyn shoe) {
+    public Shoe updateShoes(@RequestBody Shoe shoe) {
         return shoes.save(shoe);
     }
 

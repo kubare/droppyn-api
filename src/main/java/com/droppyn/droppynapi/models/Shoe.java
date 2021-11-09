@@ -1,4 +1,4 @@
-package com.droppyn.droppynapi;
+package com.droppyn.droppynapi.models;
 
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -9,7 +9,7 @@ import javax.persistence.Id;
 import java.time.LocalDate;
 
 @Document(collection = "offer")
-public class Droppyn {
+public class Shoe {
    // @GeneratedValue(strategy =  GenerationType.IDENTITY)
     @Id
     private String _id;
@@ -19,7 +19,7 @@ public class Droppyn {
     private Integer price;
     private String img;
 
-    public Droppyn(String id, String brand, String model, LocalDate date, Integer price, String img) {
+    public Shoe(String id, String brand, String model, LocalDate date, Integer price, String img) {
         this._id = id;
         this.brand = brand;
         this.model = model;
@@ -36,7 +36,7 @@ public class Droppyn {
         this.img = img;
     }
 
-    public Droppyn() {
+    public Shoe() {
     }
 
     public String getId() {

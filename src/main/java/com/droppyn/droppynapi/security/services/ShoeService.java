@@ -1,36 +1,36 @@
-package com.droppyn.droppynapi;
+package com.droppyn.droppynapi.security.services;
 
-import java.time.LocalDate;
 import java.util.Optional;
+
+import com.droppyn.droppynapi.repository.ShoeRepo;
+import com.droppyn.droppynapi.models.Shoe;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.context.event.ApplicationReadyEvent;
-import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Service;
 
 @Service
-public class DroppynManager {
+public class ShoeService {
 
-    private DroppynRepo droppynRepo;
+    private ShoeRepo shoeRepo;
 
     @Autowired
-    public DroppynManager(DroppynRepo droppynRepo) {
-        this.droppynRepo = droppynRepo;
+    public ShoeService(ShoeRepo shoeRepo) {
+        this.shoeRepo = shoeRepo;
     }
 
-    public Optional<Droppyn> findById(String id) {
-        return droppynRepo.findById(id);
+    public Optional<Shoe> findById(String id) {
+        return shoeRepo.findById(id);
     }
 
-    public Iterable<Droppyn> findAll() {
-        return droppynRepo.findAll();
+    public Iterable<Shoe> findAll() {
+        return shoeRepo.findAll();
     }
 
-    public Droppyn save(Droppyn shoe) {
-        return droppynRepo.save(shoe);
+    public Shoe save(Shoe shoe) {
+        return shoeRepo.save(shoe);
     }
 
     public void deleteById(String id) {
-        droppynRepo.deleteById(id);
+        shoeRepo.deleteById(id);
     }
 
   /*  @EventListener(ApplicationReadyEvent.class)
