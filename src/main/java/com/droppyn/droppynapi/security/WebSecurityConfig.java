@@ -1,5 +1,6 @@
 package com.droppyn.droppynapi.security;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import com.droppyn.droppynapi.security.jwt.AuthEntryPointJwt;
 import com.droppyn.droppynapi.security.jwt.AuthTokenFilter;
 import com.droppyn.droppynapi.security.services.UserDetailsServiceImpl;
