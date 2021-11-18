@@ -1,6 +1,8 @@
 package com.droppyn.droppynapi.security.services;
 
+import com.droppyn.droppynapi.models.Shoe;
 import com.droppyn.droppynapi.models.User;
+import com.droppyn.droppynapi.repository.ShoeRepo;
 import com.droppyn.droppynapi.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -14,6 +16,16 @@ import org.springframework.transaction.annotation.Transactional;
 public class UserDetailsServiceImpl implements UserDetailsService {
     @Autowired
     UserRepository userRepository;
+
+    @Autowired
+    public UserDetailsServiceImpl(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
+
+    public Iterable<User> findAll() {
+        return userRepository.findAll();
+    }
+
 
     @Override
     @Transactional

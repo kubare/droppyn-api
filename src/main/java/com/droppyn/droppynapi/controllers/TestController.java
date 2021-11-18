@@ -2,7 +2,9 @@ package com.droppyn.droppynapi.controllers;
 
 
 import com.droppyn.droppynapi.models.Shoe;
+import com.droppyn.droppynapi.models.User;
 import com.droppyn.droppynapi.security.services.ShoeService;
+import com.droppyn.droppynapi.security.services.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
@@ -12,10 +14,12 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/test")
 public class TestController {
     private ShoeService shoes;
+    private UserDetailsServiceImpl users;
 
     @Autowired
-    public TestController(ShoeService shoes) {
+    public TestController(ShoeService shoes, UserDetailsServiceImpl users) {
         this.shoes = shoes;
+        this.users = users;
     }
 
     @GetMapping("/all")
@@ -38,6 +42,11 @@ public class TestController {
     @GetMapping("/allshoes")
     public Iterable<Shoe> getAll() {
         return shoes.findAll();
+    }
+
+    @GetMapping("/allusers")
+    public Iterable<User> getAllUsers() {
+        return users.findAll();
     }
 
     @PostMapping
